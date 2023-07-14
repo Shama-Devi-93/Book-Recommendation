@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+<!--    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">-->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+      <style>
+    @keyframes fadeIn {
+      0% {
+        opacity: 0;
+      }
+      100% {
+        opacity: 1;
+      }
+    }
+    @keyframes slideIn {
+      0% {
+        transform: translateX(-100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-black">
+<!--  <nav class="bg-blue-200 h-20">-->
+<!--    <div class="container mx-auto px-4 py-6">-->
+<!--      <div class="flex items-center justify-between">-->
+<!--        <div class="flex items-center space-x-6">-->
+<!--          <h1 class="text-gray-700 font-bold text-2xl">Book Recommender</h1>-->
+<!--          <a href="/" class="text-gray-700 text-lg hover:text-gray-900 hover:bg-green-300 rounded-lg px-2 py-1 ">Home</a>-->
+<!--          <a href="/recommend" class="text-gray-700 text-lg hover:text-gray-900 hover:bg-green-300 rounded-lg px-2 py-1">Recommend</a>-->
+<!--          <a href="/contact" class="text-gray-700 text-lg hover:text-gray-900 hover:bg-green-300 rounded-lg px-2 py-1">Contact</a>-->
+<!--        </div>-->
+<!--        <div>-->
+<!--          &lt;!&ndash; Add any additional elements here, such as buttons or icons &ndash;&gt;-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+
+<nav class="bg-purple-500 ">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0">
+            <a href="/" class="text-white text-xl font-bold">Book Recommender</a>
+          </div>
+        </div>
+        <div class="hidden md:block">
+          <div class="ml-10 flex items-baseline space-x-4">
+            <a href="/" class="text-white hover:bg-purple-700 px-3 py-2 rounded-md text-lg ">Home</a>
+            <a href="/recommend" class="text-white hover:bg-purple-700 px-3 py-2 rounded-md text-lg ">Recommend</a>
+            <a href="/contact" class="text-white hover:bg-purple-700 px-3 py-2 rounded-md text-lg ">Contact</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="md:hidden">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a href="/" class="text-white hover:bg-purple-700 block px-3 py-2 rounded-md text-base font-medium">Home</a>
+        <a href="/recommend" class="text-white hover:bg-purple-700 block px-3 py-2 rounded-md text-base font-medium">Recommend</a>
+        <a href="/contact" class="text-white hover:bg-purple-700 block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+
+
+<div class="container mx-auto px-4 py-8">
+    <h2 class="text-5xl font-bold mb-4 text-white text-center">Top 50 Books</h2>
+
+    <div class="md:px-10 lg:px-0 xl:px-20 py-2 grid grid-cols-2 lg:grid-cols-5 gap-4">
+        {% for i in range(book_name|length)%}
+      <div class=" p-4">
+
+      <img src="{{ image[i] }}" alt="Book 1" class="w-40 h-60">
+
+          <h2 class="text-white text-lg truncate">{{book_name[i]}}</h2>
+          <h2 class="text-white text-sm">{{author[i]}}</h2>
+          <h1 class="text-white text-sm">Votes- {{votes[i]}}</h1>
+          <h1 class="text-white text-sm">
+      Rating -
+      {% for j in range(1, 6) %}
+        {% if rating[i] >= j %}
+          <span class="text-yellow-400">&#9733;</span>
+        {% else %}
+          <span class="text-gray-400">&#9733;</span>
+        {% endif %}
+      {% endfor %}
+    </h1>
+      </div>
+          {% endfor %}
+
+      <!-- Repeat the above three columns for additional books -->
+    </div>
+
+  </div>
+ <script src="https://cdn.tailwindcss.com/2.2.16/tailwind.min.js"></script>
+
+
+</body>
+</html>
